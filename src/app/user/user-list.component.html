@@ -1,0 +1,171 @@
+<div class="container-fluid" style="margin-top: 100px; margin-bottom: 100px;">
+
+    <h1 align="center" class="text-primary font-weight-bold pb-3"><u>User List</u></h1>
+
+    <!-- SUCCESS MESSAGE -->
+    <div *ngIf="!form.error && form.message" class="row mt-3">
+        <div class="col-md-4 offset-md-4 alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{form.message}}
+        </div>
+    </div>
+
+    <!-- ERROR MESSAGE -->
+    <div *ngIf="form.error && form.message" class="row">
+        <div class="col-md-4 offset-md-4 alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{form.message}}
+        </div>
+    </div>
+
+    <!-- SEARCH SECTION -->
+    <div *ngIf="form.list.length > 0" class="row mb-4">
+
+        <div class="col-md-12 d-flex align-items-center justify-content-center">
+
+            <!-- FIRST NAME -->
+            <label class="mr-2 font-weight-bold mb-0">{{'UserForm.FirstName' | translate}}:</label>
+            <input type="text" class="form-control mr-3" style="width:160px" name="firstName"
+                [(ngModel)]="form.searchParams.firstName" placeholder="Enter First Name">
+
+            <!-- LOGIN ID -->
+            <label class="mr-2 font-weight-bold mb-0">{{'UserForm.LoginId' | translate}}:</label>
+            <input type="text" class="form-control mr-3" style="width:170px" name="loginId"
+                [(ngModel)]="form.searchParams.loginId" placeholder="Enter Login Id">
+
+            <!-- ROLE -->
+            <label class="mr-2 font-weight-bold mb-0">{{'UserForm.Role' | translate}}:</label>
+            <select class="form-control mr-3" style="width:170px" name="roleId" [(ngModel)]="form.searchParams.roleId">
+
+                <option value="undefined">-- Select Role --</option>
+                <option *ngFor="let obj of form.preload.roleList" [value]="obj.key">
+                    {{obj.value}}
+                </option>
+
+            </select>
+
+            <!-- BUTTONS -->
+            <button class="btn btn-primary mr-2" (click)="search()">{{'Buttons.Search' | translate}}</button>
+            <button class="btn btn-dark mr-2" (click)="reset()">{{'Buttons.Reset' | translate}}</button>
+            <button class="btn btn-warning" (click)="forward('/user')">{{'Buttons.Add' | translate}}</button>
+
+        </div>
+
+    </div>
+
+    <!-- TABLE -->
+    <div *ngIf="form.list.length > 0" class="table-responsive">
+
+        <table class="table table-bordered table-hover table-striped">
+
+            <thead class="thead-dark text-center">
+
+                <tr>
+                    <th>
+                        <input type="checkbox" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)" />
+                    </th>
+
+                    <th>{{'UserForm.Table.SNo' | translate}}</th>
+                    <th>{{'UserForm.Table.Image' | translate}}</th>
+                    <th>{{'UserForm.FirstName' | translate}}</th>
+                    <th>{{'UserForm.LastName' | translate}}</th>
+                    <th>{{'UserForm.LoginId' | translate}}</th>
+                    <th>{{'UserForm.DateOfBirth' | translate}}</th>
+                    <th>{{'UserForm.Gender' | translate}}</th>
+                    <th>{{'UserForm.Role' | translate}}</th>
+                    <th>{{'UserForm.Mobile' | translate}}</th>
+                    <th>{{'UserForm.Status' | translate}}</th>
+                    <th>{{'UserForm.Table.Edit' | translate}}</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody class="text-center">
+
+                <tr *ngFor="let m of form.list; let i = index">
+
+                    <td>
+                        <input type="checkbox" #checkboxes (change)="checklistUpdate()" [id]="m.id">
+                    </td>
+
+                    <td>{{(form.pageNo*5)+i+1}}</td>
+                    <td *ngIf="m.imageId"> <img src="http://localhost:8080/User/profilePic/{{m.id}}" height="65px"
+                            width="80px"></td>
+                    <td *ngIf="!m.imageId"> <img
+                            src="data:image/png;base64,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"
+                            height="65px" width="80px"></td>
+
+
+                    <td>{{m.firstName}}</td>
+                    <td>{{m.lastName}}</td>
+                    <td>{{m.loginId}}</td>
+                    <td>{{m.dob | date : 'dd-MM-yyyy'}}</td>
+                    <td>{{m.gender}}</td>
+                    <td>{{m.roleName}}</td>
+                    <td>{{m.phone}}</td>
+                    <td>{{m.status}}</td>
+
+                    <td>
+                        <a (click)="forward('/user/' + m.id)" style="cursor:pointer" class="text-primary">
+
+                            Edit
+
+                        </a>
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- PAGINATION BUTTONS -->
+    <div *ngIf="form.list.length > 0" class="row mt-3">
+
+        <div class="col-md-4">
+
+            <button class="btn btn-warning" (click)="previous()" [disabled]="form.pageNo == 0">
+
+               {{'Buttons.Previous' | translate}}
+
+            </button>
+
+        </div>
+
+        <div class="col-md-4 text-center">
+
+            <button class="btn btn-danger" (click)="deleteMany()">
+
+               {{'Buttons.Delete' | translate}}
+
+            </button>
+
+        </div>
+
+        <div class="col-md-4 text-right">
+
+            <button class="btn btn-warning" (click)="next()" [disabled]="form.nextListSize == 0">
+
+                {{'Buttons.Next' | translate}}
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- BACK BUTTON -->
+    <div *ngIf="form.list.length == 0" class="text-center mt-4">
+
+        <button class="btn btn-secondary" (click)="reset()">
+
+            Back
+
+        </button>
+
+    </div>
+
+</div>

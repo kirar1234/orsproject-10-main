@@ -1,0 +1,56 @@
+<div align="center">
+    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Audit</h1>
+    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Audit</h1>
+
+    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
+        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
+        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    </div>
+
+    <table>
+        <tr>
+            <th align="left">Audit Id<span style="color: red">*</span></th>
+            <td><input type="text" name="auditid" [(ngModel)]="form.data.auditid" placeholder="Enter Audit Id"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.auditid}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Action Type<span style="color: red">*</span></th>
+            <td><input type="text" name="actiontype" [(ngModel)]="form.data.actiontype" placeholder="Enter Action Type">
+            </td>
+            <td style="position: fixed; color: red;">{{form.inputerror.actiontype}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Action By<span style="color: red">*</span></th>
+            <td><input type="text" name="actionby" [(ngModel)]="form.data.actionby" placeholder="Enter Action By"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.actionby}}</td>
+        </tr>
+
+
+
+        <tr>
+            <th align="left">Action Time<span style="color: red">*</span></th>
+            <td><input type="date" name="actiontime" [(ngModel)]="form.data.actiontime"
+                    [ngModel]="form.data.actiontime | date:'yyyy-MM-dd'" placeholder="Select Action Time"
+                    style="width: 97%;"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.actiontime}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Action Result<span style="color: red">*</span></th>
+            <td><input type="actionresult" name="actionresult" [(ngModel)]="form.data.actionresult"
+                    placeholder="Enter Action Result"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.actionresult}}</td>
+        </tr>
+        <tr></tr>
+
+        <tr>
+            <th></th>
+            <td align="left" colspan="2">
+                <button (click)="submit()">save</button> &nbsp;
+                <button (click)="reset()">Reset</button>
+            </td>
+        </tr>
+    </table>
+</div>

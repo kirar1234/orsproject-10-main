@@ -1,0 +1,120 @@
+<div class="container pt-4" style="margin-top: 100px;margin-bottom: 100px;">
+
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+
+            <div class="card shadow">
+                <div class="card-body">
+
+                    <h3 class="text-center text-primary mb-3">My Profile</h3>
+
+                    <!-- Success / Error Message -->
+                    <div *ngIf="form.message">
+                        <div class="alert alert-success" *ngIf="!form.error">
+                            {{form.message}}
+                        </div>
+                        <div class="alert alert-danger" *ngIf="form.error">
+                            {{form.message}}
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <label><b>Email Id</b><span style="color:red">*</span></label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">
+                            <i class="fa fa-address-card"></i>
+                        </span>
+                        <input type="text" class="form-control" name="loginId" [(ngModel)]="form.data.loginId" readonly
+                            placeholder="Email Id">
+                    </div>
+                    <small class="text-danger">{{form.inputerror.loginId}}</small>
+
+                    <!-- First Name -->
+                    <label class="mt-2"><b>First Name</b><span style="color:red">*</span></label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <input type="text" class="form-control" name="firstName" [(ngModel)]="form.data.firstName"
+                            placeholder="First Name">
+                    </div>
+                    <small class="text-danger">{{form.inputerror.firstName}}</small>
+
+                    <!-- Last Name -->
+                    <label class="mt-2"><b>Last Name</b><span style="color:red">*</span></label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">
+                            <i class="fa fa-user-circle"></i>
+                        </span>
+                        <input type="text" class="form-control" name="lastName" [(ngModel)]="form.data.lastName"
+                            placeholder="Last Name">
+                    </div>
+                    <small class="text-danger">{{form.inputerror.lastName}}</small>
+
+                    <!-- Mobile -->
+                    <label class="mt-2"><b>Mobile No</b><span style="color:red">*</span></label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">
+                            <i class="fa fa-phone"></i>
+                        </span>
+                        <input type="text" class="form-control" maxlength="10" name="phone"
+                            [(ngModel)]="form.data.phone" placeholder="Mobile No">
+                    </div>
+                    <small class="text-danger">{{form.inputerror.phone}}</small>
+
+                    <!-- Gender -->
+                    <label class="mt-2"><b>Gender</b><span style="color:red">*</span></label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">
+                            <i class="fa fa-venus-mars"></i>
+                        </span>
+
+                        <select class="form-control" name="gender" [(ngModel)]="form.data.gender">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <small class="text-danger">{{form.inputerror.gender}}</small>
+
+                    <!-- DOB -->
+                    <label class="mt-2"><b>Date Of Birth</b><span style="color:red">*</span></label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+
+                        <input type="date" class="form-control" name="dob" [(ngModel)]="form.data.dob"
+                            [ngModel]="form.data.dob | date:'yyyy-MM-dd'">
+                    </div>
+                    <small class="text-danger">{{form.inputerror.dob}}</small>
+
+                    <!-- Buttons -->
+                    <div class="text-center mt-3">
+
+                        <!-- ADD MODE -->
+                        <button *ngIf="!form.data.id" type="button" class="btn btn-success" (click)="submit()">
+                            Save
+                        </button>&nbsp;
+
+                        <button *ngIf="!form.data.id" type="button" class="btn btn-warning btn-md" (click)="reset()">
+                            Reset
+                        </button>
+
+
+                        <!-- UPDATE MODE -->
+                        <button *ngIf="form.data.id > 0" type="button" class="btn btn-primary" (click)="submit()">
+                            Update
+                        </button>&nbsp;
+
+                        <button *ngIf="form.data.id > 0" type="button" class="btn btn-info"
+                            (click)="forward('/userlist')">
+                            List
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

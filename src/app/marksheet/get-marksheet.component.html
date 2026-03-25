@@ -1,0 +1,190 @@
+<div class="container-fluid" style="margin-top:150px; margin-bottom:80px;">
+
+    <form (ngSubmit)="go()">
+
+        <!-- HEADING -->
+        <div class="text-center">
+            <h1 style="font-size:40px; color:#162390;">Get Marksheet</h1>
+        </div>
+
+        <!-- SUCCESS MESSAGE -->
+        <div *ngIf="!form.error && form.message" class="row mt-3 justify-content-center">
+            <div class="col-md-4 alert alert-success alert-dismissible text-center">
+                <button type="button" class="close">&times;</button>
+                {{form.message}}
+            </div>
+        </div>
+
+        <!-- ERROR MESSAGE -->
+        <div *ngIf="form.error && form.message" class="row justify-content-center">
+            <div class="col-md-4 alert alert-danger alert-dismissible text-center">
+                <button type="button" class="close">&times;</button>
+                {{form.message}}
+            </div>
+        </div>
+
+        <!-- SEARCH SECTION -->
+        <div class="row mt-4 justify-content-center">
+
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+
+                <label class="mb-0 mr-2"><b>Roll No:</b></label>
+
+                <input type="text" name="rollNo" class="form-control mr-2" style="width:200px;"
+                    [(ngModel)]="form.data.rollNo" placeholder="Enter Roll Number">
+
+                <button type="submit" class="btn btn-primary mr-2">
+                    Search
+                </button>
+
+                <button type="button" class="btn btn-secondary" (click)="reset()">
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+
+    <!-- MARKSHEET TABLE -->
+    <div class="row mt-5 justify-content-center" *ngIf="form.list && form.list.rollNo">
+
+        <div class="col-md-8">
+
+            <table class="table table-bordered bg-white text-center">
+
+                <tr>
+                    <th colspan="2">Roll No</th>
+                    <td colspan="3">{{form.list.rollNo}}</td>
+                </tr>
+
+                <tr>
+                    <th colspan="2">Name</th>
+                    <td colspan="3">{{form.list.name}}</td>
+                </tr>
+
+                <tr style="background:#e1b5158c;">
+                    <th>Subject</th>
+                    <th>Max Marks</th>
+                    <th>Min Marks</th>
+                    <th colspan="2">Marks Obtain</th>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th>Marks</th>
+                    <th class="text-primary">Grade</th>
+                </tr>
+
+                <!-- PHYSICS -->
+                <tr>
+                    <th>Physics</th>
+                    <td>100</td>
+                    <td>35</td>
+                    <td>
+                        {{form.list.physics}}
+                        <span *ngIf="form.list.physics < 35" class="text-danger">*</span>
+                    </td>
+
+                    <td>
+                        <b *ngIf="form.list.physics >= 90">A++</b>
+                        <b *ngIf="form.list.physics >= 80 && form.list.physics < 90">A</b>
+                        <b *ngIf="form.list.physics >= 70 && form.list.physics < 80">B++</b>
+                        <b *ngIf="form.list.physics >= 60 && form.list.physics < 70">B</b>
+                        <b *ngIf="form.list.physics >= 50 && form.list.physics < 60">C++</b>
+                        <b *ngIf="form.list.physics >= 40 && form.list.physics < 50">C</b>
+                        <b *ngIf="form.list.physics >= 35 && form.list.physics < 40">D</b>
+                        <b *ngIf="form.list.physics < 35" class="text-danger">F</b>
+                    </td>
+                </tr>
+
+                <!-- CHEMISTRY -->
+                <tr>
+                    <th>Chemistry</th>
+                    <td>100</td>
+                    <td>35</td>
+                    <td>
+                        {{form.list.chemistry}}
+                        <span *ngIf="form.list.chemistry < 35" class="text-danger">*</span>
+                    </td>
+
+                    <td>
+                        <b *ngIf="form.list.chemistry >= 90">A++</b>
+                        <b *ngIf="form.list.chemistry >= 80 && form.list.chemistry < 90">A</b>
+                        <b *ngIf="form.list.chemistry >= 70 && form.list.chemistry < 80">B++</b>
+                        <b *ngIf="form.list.chemistry >= 60 && form.list.chemistry < 70">B</b>
+                        <b *ngIf="form.list.chemistry >= 50 && form.list.chemistry < 60">C++</b>
+                        <b *ngIf="form.list.chemistry >= 40 && form.list.chemistry < 50">C</b>
+                        <b *ngIf="form.list.chemistry >= 35 && form.list.chemistry < 40">D</b>
+                        <b *ngIf="form.list.chemistry < 35" class="text-danger">F</b>
+                    </td>
+                </tr>
+
+                <!-- MATHS -->
+                <tr>
+                    <th>Maths</th>
+                    <td>100</td>
+                    <td>35</td>
+                    <td>
+                        {{form.list.maths}}
+                        <span *ngIf="form.list.maths < 35" class="text-danger">*</span>
+                    </td>
+
+                    <td>
+                        <b *ngIf="form.list.maths >= 90">A++</b>
+                        <b *ngIf="form.list.maths >= 80 && form.list.maths < 90">A</b>
+                        <b *ngIf="form.list.maths >= 70 && form.list.maths < 80">B++</b>
+                        <b *ngIf="form.list.maths >= 60 && form.list.maths < 70">B</b>
+                        <b *ngIf="form.list.maths >= 50 && form.list.maths < 60">C++</b>
+                        <b *ngIf="form.list.maths >= 40 && form.list.maths < 50">C</b>
+                        <b *ngIf="form.list.maths >= 35 && form.list.maths < 40">D</b>
+                        <b *ngIf="form.list.maths < 35" class="text-danger">F</b>
+                    </td>
+                </tr>
+
+                <!-- TOTAL -->
+                <tr>
+                    <th colspan="2">Total</th>
+                    <td colspan="3">
+                        {{form.list.physics + form.list.chemistry + form.list.maths}}
+                    </td>
+                </tr>
+
+                <!-- PERCENTAGE -->
+                <tr *ngIf="form.list.physics>35 && form.list.chemistry>35 && form.list.maths>35">
+                    <th colspan="2">Percentage</th>
+                    <td colspan="3">
+                        {{((form.list.physics + form.list.chemistry + form.list.maths)*100)/300 | number:'1.2-2'}} %
+                    </td>
+                </tr>
+
+                <!-- RESULT -->
+                <tr>
+                    <th colspan="2">Result</th>
+
+                    <td colspan="3"
+                        *ngIf="form.list.physics>35 && form.list.chemistry>35 && form.list.maths>35; else fail">
+
+                        <span class="text-success"><b>PASS</b></span>
+
+                    </td>
+
+                    <ng-template #fail>
+                        <td colspan="3">
+                            <span class="text-danger"><b>FAIL</b></span>
+                        </td>
+                    </ng-template>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

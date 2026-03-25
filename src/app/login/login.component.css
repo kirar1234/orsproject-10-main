@@ -1,0 +1,13 @@
+.login-bg {
+    height: 100vh;
+
+    background-image: url('/assets/image/comon.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Optional */
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+}

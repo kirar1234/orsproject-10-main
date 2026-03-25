@@ -1,0 +1,381 @@
+<div class="container pt-4" style="margin-top:100px; margin-bottom:100px;">
+
+    <div class="row">
+
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h3 class="text-center text-primary pb-3" *ngIf="!form.data.id">
+                        {{'UserForm.AddUser' | translate}}
+                    </h3>
+
+                    <h3 class="text-center text-primary pb-3" *ngIf="form.data.id>0">
+                        {{'UserForm.UpdateUser' | translate}}
+                    </h3>
+
+                    <!-- SUCCESS MESSAGE -->
+                    <div *ngIf="!form.error && form.message" class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{form.message}}
+                    </div>
+
+                    <!-- ERROR MESSAGE -->
+                    <div *ngIf="form.error && form.message" class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{form.message}}
+                    </div>
+
+                    <form>
+
+                        <!-- FIRST NAME -->
+                        <label>
+                            <b>{{'UserForm.FirstName' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="firstName" [(ngModel)]="form.data.firstName"
+                                placeholder="{{'UserForm.Placeholders.FirstName' | translate}}">
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.firstName}}</span>
+                        </div>
+
+
+                        <!-- LAST NAME -->
+                        <label class="mt-2">
+                            <b>{{'UserForm.LastName' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-user-circle"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="lastName" [(ngModel)]="form.data.lastName"
+                                placeholder="{{'UserForm.Placeholders.LastName' | translate}}">
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.lastName}}</span>
+                        </div>
+
+
+                        <!-- LOGIN ID -->
+                        <label class="mt-2">
+                            <b>{{'UserForm.LoginId' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="loginId" [(ngModel)]="form.data.loginId"
+                                placeholder="{{'UserForm.Placeholders.LoginId' | translate}}">
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.loginId}}</span>
+                        </div>
+
+
+                        <!-- PASSWORD -->
+                        <label class="mt-2">
+                            <b>{{'UserForm.Password' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-key"></i>
+                                </div>
+                            </div>
+
+                            <input type="password" class="form-control" name="password" [(ngModel)]="form.data.password"
+                                placeholder="{{'UserForm.Placeholders.Password' | translate}}">
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.password}}</span>
+                        </div>
+
+
+                        <!-- DOB -->
+                        <label class="mt-2">
+                            <b>{{'UserForm.DateOfBirth' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+
+                            <input type="date" class="form-control" name="dob" [(ngModel)]="form.data.dob"
+                                [ngModel]="form.data.dob | date:'yyyy-MM-dd'">
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.dob}}</span>
+                        </div>
+
+
+                        <!-- GENDER -->
+                        <label class="mt-2">
+                            <b>{{'UserForm.Gender' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-venus-mars"></i>
+                                </div>
+                            </div>
+
+                            <select class="form-control" name="gender" [(ngModel)]="form.data.gender">
+
+                                <option value="undefined">
+                                    {{'UserForm.SelectOptions.Select' | translate}}
+                                </option>
+
+                                <option value="Male">
+                                    {{'UserForm.SelectOptions.Male' | translate}}
+                                </option>
+
+                                <option value="Female">
+                                    {{'UserForm.SelectOptions.Female' | translate}}
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.gender}}</span>
+                        </div>
+
+
+                        <!-- ROLE -->
+                        <label class="mt-2">
+                            <b>{{'UserForm.Role' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-id-badge"></i>
+                                </div>
+                            </div>
+
+                            <select class="form-control" name="roleId" [(ngModel)]="form.data.roleId">
+
+                                <option value="undefined">
+                                    {{'UserForm.SelectOptions.Select' | translate}}
+                                </option>
+
+                                <option *ngFor="let obj of form.preload.roleList" [value]="obj.key">
+                                    {{obj.value}}
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.roleId}}</span>
+                        </div>
+
+                        <!-- MOBILE -->
+                        <label class="mt-2">
+                            <b>{{'UserForm.Mobile' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="phone" [(ngModel)]="form.data.phone"
+                                maxlength="10" placeholder="{{'UserForm.Placeholders.Mobile' | translate}}">
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.phone}}</span>
+                        </div>
+
+                        <!-- ALTERNATE MOBILE -->
+                        <label class="mt-2">
+                            <b>{{'UserForm.AlternateMobile' | translate}}</b>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="alternateMobile"
+                                [(ngModel)]="form.data.alternateMobile" maxlength="10"
+                                placeholder="{{'UserForm.Placeholders.AlternateMobile' | translate}}">
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.alternateMobile}}</span>
+                        </div>
+
+
+                        <!-- STATUS -->
+                        <label class="mt-2">
+                            <b>{{'UserForm.Status' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-3">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-toggle-on"></i>
+                                </div>
+                            </div>
+
+                            <select class="form-control" name="status" [(ngModel)]="form.data.status">
+
+                                <option value="undefined">
+                                    {{'UserForm.SelectOptions.Select' | translate}}
+                                </option>
+
+                                <option value="Active">
+                                    {{'UserForm.SelectOptions.Active' | translate}}
+                                </option>
+
+                                <option value="Inactive">
+                                    {{'UserForm.SelectOptions.Inactive' | translate}}
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.status}}</span>
+                        </div>
+
+
+                        <!-- IMAGE UPLOAD -->
+                        <!-- PROFILE IMAGE -->
+                        <tr *ngIf="form.data.id > 0">
+                            <th></th>
+                            <td>
+
+                                <!-- NEW IMAGE PREVIEW (priority) -->
+                                <img *ngIf="form.data.imagePreview" [src]="form.data.imagePreview" height="90px"
+                                    width="90px" style="border-radius:50%; object-fit:cover;">
+
+                                <!-- EXISTING IMAGE FROM API -->
+                                <img *ngIf="!form.data.imagePreview && form.data.imageId"
+                                    [src]="'http://localhost:8080/User/profilePic/' + form.data.id" height="90px"
+                                    width="90px" style="border-radius:50%; object-fit:cover;">
+
+                                <!-- DEFAULT IMAGE -->
+                                <img *ngIf="!form.data.imagePreview && !form.data.imageId"
+                                    src="data:image/png;base64,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"
+                                    height="90px" width="90px" style="border-radius:50%; object-fit:cover;">
+
+                            </td>
+                        </tr>
+
+                        <!-- IMAGE UPLOAD -->
+                        <tr>
+                            <th *ngIf="form.data.id > 0">Update Image :</th>
+                            <th *ngIf="!form.data.id">Upload Image :</th>
+                            <td>
+                                <input type="file" name="imageId" (change)="onFileSelect($event)" accept="image/*">
+                            </td>
+                        </tr>
+
+
+
+                        <!-- BUTTONS -->
+                        <div class="text-center mt-3">
+
+                            <button *ngIf="!form.data.id" type="button" class="btn btn-success" (click)="submit()">
+
+                                {{'Buttons.Save' | translate}}
+
+                            </button>
+
+                            &nbsp;
+
+                            <button *ngIf="!form.data.id" type="button" class="btn btn-warning btn-md"
+                                (click)="reset()">
+
+                                {{'Buttons.Reset' | translate}}
+
+                            </button>
+
+
+                            <button *ngIf="form.data.id > 0" type="button" class="btn btn-primary" (click)="submit()">
+
+                                {{'Buttons.Update' | translate}}
+
+                            </button>
+
+                            &nbsp;
+
+                            <button *ngIf="form.data.id > 0" type="button" class="btn btn-info"
+                                (click)="forward('/userlist')">
+
+                                {{'Buttons.List' | translate}}
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3"></div>
+
+    </div>
+
+</div>
