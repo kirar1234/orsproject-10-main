@@ -1,0 +1,121 @@
+<div class="container" style="margin-top:80px; margin-top: 200px;">
+
+    <div class="row">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+
+                    <h3 class="text-center text-primary" *ngIf="!form.data.id">Add College</h3>
+                    <h3 class="text-center text-primary" *ngIf="form.data.id>0">Update College</h3>
+
+                    <div style="text-align:center; margin-bottom:15px;">
+                        <div class="alert alert-success" *ngIf="!form.error && form.message">
+                            {{ form.message }}
+                        </div>
+
+                        <div class="alert alert-danger" *ngIf="form.error && form.message">
+                            {{ form.message }}
+                        </div>
+                    </div>
+
+                    <!-- Name -->
+                    <span><b>Name</b><span style="color:red">*</span></span>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-university"></i>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="form.data.name"
+                            placeholder="Enter College Name">
+                    </div>
+                    <div style="color:red">{{form.inputerror.name}}</div>
+
+                    <!-- Address -->
+                    <span><b>Address</b><span style="color:red">*</span></span>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-address-book"></i>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" name="address" [(ngModel)]="form.data.address"
+                            placeholder="Enter Address">
+                    </div>
+                    <div style="color:red">{{form.inputerror.address}}</div>
+
+                    <!-- State -->
+                    <span><b>State</b><span style="color:red">*</span></span>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-address-card"></i>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" name="state" [(ngModel)]="form.data.state"
+                            placeholder="Enter State">
+                    </div>
+                    <div style="color:red">{{form.inputerror.state}}</div>
+
+                    <!-- City -->
+                    <span><b>City</b><span style="color:red">*</span></span>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-address-card"></i>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" name="city" [(ngModel)]="form.data.city"
+                            placeholder="Enter City">
+                    </div>
+                    <div style="color:red">{{form.inputerror.city}}</div>
+
+                    <!-- Phone -->
+                    <span><b>Phone No</b><span style="color:red">*</span></span>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" name="phoneNo" [(ngModel)]="form.data.phoneNo"
+                            maxlength="10" placeholder="Enter Phone No.">
+                    </div>
+                    <div style="color:red">{{form.inputerror.phoneNo}}</div>
+
+                    <br>
+
+                    <div class="text-center mt-3">
+
+                        <!-- ADD MODE -->
+                        <button *ngIf="!form.data.id" type="button" class="btn btn-success" (click)="submit()">
+                            Save
+                        </button>&nbsp;
+
+                        <button *ngIf="!form.data.id" type="button" class="btn btn-warning btn-md" (click)="reset()">
+                            Reset
+                        </button>
+
+
+                        <!-- UPDATE MODE -->
+                        <button *ngIf="form.data.id > 0" type="button" class="btn btn-primary" (click)="submit()">
+                            Update
+                        </button>&nbsp;
+
+                        <button *ngIf="form.data.id > 0" type="button" class="btn btn-info"
+                            (click)="forward('/collegelist')">
+                            List
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4"></div>
+    </div>
+
+</div>

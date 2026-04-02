@@ -1,0 +1,71 @@
+<div align="center">
+    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Doctor</h1>
+    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Doctor</h1>
+
+    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
+        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
+        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    </div>
+
+    <table>
+        <tr>
+            <th align="left">Doctor Name<span style="color: red">*</span></th>
+            <td><input type="text" name="name" [(ngModel)]="form.data.name" placeholder="Enter  doctor name"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.name}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Appointment Date<span style="color: red">*</span></th>
+            <td><input type="date" name="appointmentdate" [(ngModel)]="form.data.appointmentdate"
+                    [ngModel]="form.data.appointmentdate | date:'yyyy-MM-dd'" placeholder="Select appointment date"
+                    style="width: 97%;"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.appointmentdate}}</td>
+        </tr>
+
+
+
+
+
+        <tr>
+            <th align="left">Experties<span style="color: red">*</span></th>
+            <td>
+                <select name="experties" [(ngModel)]="form.data.experties" style="width: 170px;">
+                    <option value="undefined">------------Select------------</option>
+                    <option value="Cardiologist">Cardiologist</option>
+                    <option value="Dermatologist">Dermatologist</option>
+                    <option value="Orthopedic">Orthopedic</option>
+                    <option value="Dentist">Dentist</option>
+                    <option value="Neurologist">Neurologist</option>
+                    <option value="Pediatrician">Pediatrician</option>
+
+                </select>
+            </td>
+            <td style="position: fixed; color: red;">{{form.inputerror.experties}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Mobile<span style="color: red">*</span></th>
+            <td><input type="generatedBy" name="mobile" [(ngModel)]="form.data.mobile" placeholder="Enter Mobile no">
+            </td>
+            <td style="position: fixed; color: red;">{{form.inputerror.mobile}}</td>
+        </tr>
+
+
+
+
+
+
+
+
+
+        <tr></tr>
+
+        <tr>
+            <th></th>
+            <td align="left" colspan="2">
+                <button (click)="submit()">save</button> &nbsp;
+                <button (click)="reset()">Reset</button>
+            </td>
+        </tr>
+    </table>
+</div>

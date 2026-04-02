@@ -1,0 +1,175 @@
+<div class="container pt-4" style="margin-top: 100px; margin-bottom: 100px;">
+
+    <div class="row">
+
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h3 class="text-center text-primary pb-3">User Registration</h3>
+
+                    <!-- SUCCESS MESSAGE -->
+                    <div *ngIf="!form.error && form.message" class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{form.message}}
+                    </div>
+
+                    <!-- ERROR MESSAGE -->
+                    <div *ngIf="form.error && form.message" class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{form.message}}
+                    </div>
+
+                    <!-- FORM START -->
+                    <form>
+
+                        <!-- FIRST NAME -->
+                        <label><b>First Name</b> <span style="color:red">*</span></label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="firstName" [(ngModel)]="form.data.firstName"
+                                placeholder="Enter First Name">
+                        </div>
+
+                        <div><span class="text-danger">{{form.inputerror.firstName}}</span></div>
+
+                        <!-- LAST NAME -->
+                        <label class="mt-2"><b>Last Name</b> <span style="color:red">*</span></label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-user-circle"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="lastName" [(ngModel)]="form.data.lastName"
+                                placeholder="Enter Last Name">
+                        </div>
+
+                        <div><span class="text-danger">{{form.inputerror.lastName}}</span></div>
+
+                        <!-- LOGIN ID -->
+                        <label class="mt-2"><b>Login Id</b> <span style="color:red">*</span></label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="loginId" [(ngModel)]="form.data.loginId"
+                                placeholder="Enter Login ID">
+                        </div>
+
+                        <div> <span class="text-danger">{{form.inputerror.loginId}}</span></div>
+
+                        <!-- PASSWORD -->
+                        <label class="mt-2"><b>Password</b> <span style="color:red">*</span></label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-key"></i>
+                                </div>
+                            </div>
+
+                            <input type="password" class="form-control" name="password" [(ngModel)]="form.data.password"
+                                placeholder="Enter Password">
+                        </div>
+
+                        <div><span class="text-danger">{{form.inputerror.password}}</span></div>
+
+                        <!-- DOB -->
+                        <label class="mt-2"><b>Date of Birth</b> <span style="color:red">*</span></label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+
+                            <input type="date" class="form-control" name="dob" [(ngModel)]="form.data.dob">
+                        </div>
+
+                        <div><span class="text-danger">{{form.inputerror.dob}}</span></div>
+
+                        <!-- GENDER -->
+                        <label class="mt-2"><b>Gender</b> <span style="color:red">*</span></label>
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-venus-mars"></i>
+                                </div>
+                            </div>
+
+                            <select class="form-control" name="gender" [(ngModel)]="form.data.gender">
+
+                                <option value="undefined">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+
+                            </select>
+
+                        </div>
+
+                        <div><span class="text-danger">{{form.inputerror.gender}}</span></div>
+
+                        <!-- MOBILE -->
+                        <label class="mt-2"><b>Mobile</b> <span style="color:red">*</span></label>
+                        <div class="input-group mb-3">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="phone" [(ngModel)]="form.data.phone"
+                                maxlength="10" placeholder="Enter Mobile No">
+
+                        </div>
+
+                        <div><span class="text-danger">{{form.inputerror.phone}}</span></div>
+
+                        <!-- BUTTONS -->
+                        <div class="text-center mt-3">
+
+                            <button type="button" class="btn btn-success" (click)="signUp()">
+
+                                Sign Up
+
+                            </button>
+
+                            &nbsp;
+
+                            <button type="button" class="btn btn-secondary" (click)="reset()">
+
+                                Reset
+
+                            </button>
+
+                        </div>
+
+                    </form>
+                    <!-- FORM END -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3"></div>
+
+    </div>
+
+</div>

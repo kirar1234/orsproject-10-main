@@ -1,0 +1,153 @@
+<div class="container-fluid" style="margin-top:200px; margin-bottom:100px;">
+
+    <div class="row">
+
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h3 class="text-center text-primary" *ngIf="!form.data.id">
+                        Add Course
+                    </h3>
+
+                    <h3 class="text-center text-primary" *ngIf="form.data.id > 0">
+                        Update Course
+                    </h3>
+
+                    <!-- Success Message -->
+                    <div *ngIf="!form.error && form.message" class="alert alert-success">
+                        {{form.message}}
+                    </div>
+
+                    <!-- Error Message -->
+                    <div *ngIf="form.error && form.message" class="alert alert-danger">
+                        {{form.message}}
+                    </div>
+
+                    <!-- Course Name -->
+                    <div class="form-group">
+
+                        <label>
+                            <b>Course Name</b> <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-book"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="name" [(ngModel)]="form.data.name"
+                                placeholder="Enter Course Name">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.name}}
+                        </small>
+
+                    </div>
+
+                    <!-- Duration -->
+                    <div class="form-group">
+
+                        <label>
+                            <b>Duration</b> <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
+
+                            <select class="form-control" name="duration" [(ngModel)]="form.data.duration">
+
+                                <option value="">------------Select------------</option>
+                                <option value="1 Year">1 Year</option>
+                                <option value="2 Year">2 Year</option>
+                                <option value="3 Year">3 Year</option>
+                                <option value="4 Year">4 Year</option>
+                                <option value="5 Year">5 Year</option>
+
+                            </select>
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.duration}}
+                        </small>
+
+                    </div>
+
+                    <!-- Description -->
+                    <div class="form-group">
+
+                        <label>
+                            <b>Description</b> <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-list"></i>
+                                </div>
+                            </div>
+
+                            <textarea class="form-control" rows="4" name="description"
+                                [(ngModel)]="form.data.description" placeholder="Enter description">
+                            </textarea>
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.description}}
+                        </small>
+
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="text-center mt-3">
+
+                        <!-- ADD MODE -->
+                        <button *ngIf="!form.data.id" type="button" class="btn btn-success" (click)="submit()">
+                            Save
+                        </button>&nbsp;
+
+                        <button *ngIf="!form.data.id" type="button" class="btn btn-warning btn-md" (click)="reset()">
+                            Reset
+                        </button>
+
+
+                        <!-- UPDATE MODE -->
+                        <button *ngIf="form.data.id > 0" type="button" class="btn btn-primary" (click)="submit()">
+                            Update
+                        </button>&nbsp;
+
+                        <button *ngIf="form.data.id > 0" type="button" class="btn btn-info"
+                            (click)="forward('/courselist')">
+                            List
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4"></div>
+
+    </div>
+
+</div>

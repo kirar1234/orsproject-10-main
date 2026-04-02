@@ -1,0 +1,139 @@
+<div class="container-fluid" style="margin-top: 100px; margin-bottom: 100px;">
+
+    <h1 align="center" class="text-primary font-weight-bold pb-3">
+        <u>Course List</u>
+    </h1>
+
+    <!-- SUCCESS MESSAGE -->
+    <div *ngIf="!form.error && form.message" class="row mt-3">
+        <div class="col-md-4 offset-md-4 alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{form.message}}
+        </div>
+    </div>
+
+    <!-- ERROR MESSAGE -->
+    <div *ngIf="form.error && form.message" class="row">
+        <div class="col-md-4 offset-md-4 alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{form.message}}
+        </div>
+    </div>
+
+    <!-- SEARCH SECTION -->
+    <div *ngIf="form.list.length > 0" class="row mb-4">
+
+        <div class="col-md-12 d-flex align-items-center justify-content-center">
+
+            <label class="mr-2 font-weight-bold mb-0">
+                Course Name:
+            </label>
+
+            <input type="text" class="form-control mr-3" style="width:200px" name="name"
+                [(ngModel)]="form.searchParams.name" placeholder="Enter Course Name">
+
+            <button class="btn btn-primary mr-2" (click)="search()">
+                Search
+            </button>
+
+            <button class="btn btn-dark mr-2" (click)="reset()">
+                Reset
+            </button>
+
+            <button class="btn btn-warning" (click)="forward('/course')">
+                Add
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- TABLE -->
+    <div *ngIf="form.list.length > 0" class="table-responsive">
+
+        <table class="table table-bordered table-hover table-striped">
+
+            <thead class="thead-dark text-center">
+
+                <tr>
+
+                    <th>
+                        <input type="checkbox" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)" />
+                    </th>
+
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Duration</th>
+                    <th>Description</th>
+                    <th>Edit</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody class="text-center">
+
+                <tr *ngFor="let m of form.list; let i = index">
+
+                    <td>
+                        <input type="checkbox" #checkboxes (change)="checklistUpdate()" [id]="m.id">
+                    </td>
+
+                    <td>{{(form.pageNo*5)+i+1}}</td>
+                    <td>{{m.name}}</td>
+                    <td>{{m.duration}}</td>
+                    <td>{{m.description}}</td>
+
+                    <td>
+                        <a (click)="forward('/course/' + m.id)" style="cursor:pointer" class="text-primary">
+                            Edit
+                        </a>
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- PAGINATION BUTTONS -->
+    <div *ngIf="form.list.length > 0" class="row mt-3">
+
+        <div class="col-md-4">
+
+            <button class="btn btn-warning" (click)="previous()" [disabled]="form.pageNo == 0">
+                Previous
+            </button>
+
+        </div>
+
+        <div class="col-md-4 text-center">
+
+            <button class="btn btn-danger" (click)="deleteMany()">
+                Delete
+            </button>
+
+        </div>
+
+        <div class="col-md-4 text-right">
+
+            <button class="btn btn-warning" (click)="next()" [disabled]="form.nextListSize == 0">
+                Next
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- BACK BUTTON -->
+    <div *ngIf="form.list.length == 0" class="text-center mt-4">
+
+        <button class="btn btn-secondary" (click)="reset()">
+            Back
+        </button>
+
+    </div>
+
+</div>

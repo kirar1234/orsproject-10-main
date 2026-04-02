@@ -1,0 +1,130 @@
+<div class="container pt-4" style="margin-top:100px; margin-bottom:100px;">
+
+    <div class="row">
+
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h3 class="text-center text-primary pb-3" *ngIf="!form.data.id">Add Subject</h3>
+                    <h3 class="text-center text-primary pb-3" *ngIf="form.data.id>0">Update Subject</h3>
+
+                    <!-- SUCCESS MESSAGE -->
+                    <div *ngIf="!form.error && form.message" class="alert alert-success">
+                        {{form.message}}
+                    </div>
+
+                    <!-- ERROR MESSAGE -->
+                    <div *ngIf="form.error && form.message" class="alert alert-danger">
+                        {{form.message}}
+                    </div>
+
+                    <form>
+
+                        <!-- NAME -->
+                        <label><b>Name</b> <span style="color:red">*</span></label>
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-book"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="name" [(ngModel)]="form.data.name"
+                                placeholder="Enter Subject Name">
+
+                        </div>
+                        <div><span class="text-danger">{{form.inputerror.name}}</span></div>
+
+
+                        <!-- COURSE -->
+                        <label class="mt-2"><b>Course</b> <span style="color:red">*</span></label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-graduation-cap"></i>
+                                </div>
+                            </div>
+
+                            <select class="form-control" name="courseId" [(ngModel)]="form.data.courseId">
+
+                                <option value="undefined">------------Select------------</option>
+
+                                <option *ngFor="let obj of form.preload.courseList" [value]="obj.key">
+                                    {{obj.value}}
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div><span class="text-danger">{{form.inputerror.courseId}}</span></div>
+
+
+                        <!-- DESCRIPTION -->
+                        <label class="mt-2"><b>Description</b> <span style="color:red">*</span></label>
+
+                        <div class="input-group mb-3">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-list"></i>
+                                </div>
+                            </div>
+
+                            <textarea class="form-control" name="description" [(ngModel)]="form.data.description"
+                                rows="3" style="resize:none" placeholder="Enter Short description">
+                            </textarea>
+
+                        </div>
+
+                        <div><span class="text-danger">{{form.inputerror.description}}</span></div>
+
+
+                        <!-- BUTTONS -->
+                        <div class="text-center mt-3">
+
+                            <!-- ADD MODE -->
+                            <button *ngIf="!form.data.id" type="button" class="btn btn-success" (click)="submit()">
+                                Save
+                            </button>&nbsp;
+
+                            <button *ngIf="!form.data.id" type="button" class="btn btn-warning btn-md" (click)="reset()">
+                                Reset
+                            </button>
+
+
+                            <!-- UPDATE MODE -->
+                            <button *ngIf="form.data.id>0" type="button" class="btn btn-primary" (click)="submit()">
+                                Update
+                            </button>
+
+                            &nbsp;
+
+                            <button *ngIf="form.data.id>0" type="button" class="btn btn-info"
+                                (click)="forward('/subjectlist')">
+                                List
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3"></div>
+
+    </div>
+
+</div>

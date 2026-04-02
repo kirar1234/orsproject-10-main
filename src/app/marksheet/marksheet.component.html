@@ -1,0 +1,166 @@
+<div class="container" style="margin-top:200px; margin-bottom:100px;">
+
+    <div class="row">
+
+        <div class="col-md-4"></div>
+
+        <div class="col-md-6">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h3 class="text-center text-primary" *ngIf="!form.data.id">Add Marksheet</h3>
+                    <h3 class="text-center text-primary" *ngIf="form.data.id>0">Update Marksheet</h3>
+
+                    <!-- MESSAGE -->
+                    <div class="text-center mb-3">
+
+                        <div class="alert alert-success" *ngIf="!form.error && form.message">
+                            {{ form.message }}
+                        </div>
+
+                        <div class="alert alert-danger" *ngIf="form.error && form.message">
+                            {{ form.message }}
+                        </div>
+
+                    </div>
+
+                    <!-- ROLL NO -->
+                    <span><b>Roll No</b><span style="color:red">*</span></span>
+
+                    <div class="input-group mb-2">
+
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-list-ol"></i>
+                            </div>
+                        </div>
+
+                        <input type="text" class="form-control" name="rollNo" maxlength="5"
+                            [(ngModel)]="form.data.rollNo" placeholder="Enter Roll No">
+
+                    </div>
+
+                    <div style="color:red">{{form.inputerror.rollNo}}</div>
+
+
+                    <!-- STUDENT NAME -->
+                    <span><b>Student Name</b><span style="color:red">*</span></span>
+
+                    <div class="input-group mb-2">
+
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+
+                        <select class="form-control" name="studentId" [(ngModel)]="form.data.studentId">
+
+                            <option value="undefined">------------Select------------</option>
+
+                            <option *ngFor="let obj of form.preload.studentList" [value]="obj.key">
+                                {{obj.value}}
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div style="color:red">{{form.inputerror.studentId}}</div>
+
+
+                    <!-- PHYSICS -->
+                    <span><b>Physics</b><span style="color:red">*</span></span>
+
+                    <div class="input-group mb-2">
+
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-equals"></i>
+                            </div>
+                        </div>
+
+                        <input type="text" class="form-control" name="physics" maxlength="3"
+                            [(ngModel)]="form.data.physics" placeholder="Enter Physics Marks">
+
+                    </div>
+
+                    <div style="color:red">{{form.inputerror.physics}}</div>
+
+
+                    <!-- CHEMISTRY -->
+                    <span><b>Chemistry</b><span style="color:red">*</span></span>
+
+                    <div class="input-group mb-2">
+
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-equals"></i>
+                            </div>
+                        </div>
+
+                        <input type="text" class="form-control" name="chemistry" maxlength="3"
+                            [(ngModel)]="form.data.chemistry" placeholder="Enter Chemistry Marks">
+
+                    </div>
+
+                    <div style="color:red">{{form.inputerror.chemistry}}</div>
+
+
+                    <!-- MATHS -->
+                    <span><b>Maths</b><span style="color:red">*</span></span>
+
+                    <div class="input-group mb-2">
+
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-equals"></i>
+                            </div>
+                        </div>
+
+                        <input type="text" class="form-control" name="maths" maxlength="3" [(ngModel)]="form.data.maths"
+                            placeholder="Enter Maths Marks">
+
+                    </div>
+
+                    <div style="color:red">{{form.inputerror.maths}}</div>
+
+                    <br>
+
+                    <div class="text-center mt-3">
+
+                        <!-- ADD MODE -->
+                        <button *ngIf="!form.data.id" type="button" class="btn btn-success" (click)="submit()">
+                            Save
+                        </button>&nbsp;
+
+                        <button *ngIf="!form.data.id" type="button" class="btn btn-warning btn-md" (click)="reset()">
+                            Reset
+                        </button>
+
+
+                        <!-- UPDATE MODE -->
+                        <button *ngIf="form.data.id > 0" type="button" class="btn btn-primary" (click)="submit()">
+                            Update
+                        </button>&nbsp;
+
+                        <button *ngIf="form.data.id > 0" type="button" class="btn btn-info"
+                            (click)="forward('/marksheetlist')">
+                            List
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4"></div>
+
+    </div>
+
+</div>

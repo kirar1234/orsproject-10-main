@@ -1,0 +1,17 @@
+.main-content {
+    min-height: 100vh;
+
+    background-image: url('/assets/image/comon.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 20px;
+}
+
+/* .table-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+} */

@@ -1,0 +1,55 @@
+<div align="center">
+    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Shopping</h1>
+    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Shopping</h1>
+
+    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
+        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
+        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    </div>
+
+    <table>
+        <tr>
+            <th align="left">Product Name<span style="color: red">*</span></th>
+            <td><input type="text" name="productname" [(ngModel)]="form.data.productname" placeholder="Enter Product Name"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.productname}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Shop Name<span style="color: red">*</span></th>
+            <td><input type="text" name="shopname" [(ngModel)]="form.data.shopname" placeholder="Enter Shop Name"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.shopname}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Product Price<span style="color: red">*</span></th>
+            <td><input type="text" name="productprice" [(ngModel)]="form.data.productprice" placeholder="Enter Product Price"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.productprice}}</td>
+        </tr>
+
+       
+
+        <tr>
+            <th align="left">Shopping Date<span style="color: red">*</span></th>
+            <td><input type="date" name="shoppingdate" [(ngModel)]="form.data.shoppingdate" [ngModel]="form.data.shoppingdate | date:'yyyy-MM-dd'" placeholder="Select Date of Birth" style="width: 97%;"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.shoppingdate}}</td>
+        </tr>
+
+       
+
+       
+
+       
+       
+       
+
+        <tr></tr>
+
+        <tr>
+            <th></th>
+            <td align="left" colspan="2">
+                <button (click)="submit()">save</button> &nbsp;
+               <button (click)="reset()">Reset</button>
+            </td>
+        </tr>
+    </table>
+</div>

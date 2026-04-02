@@ -1,0 +1,97 @@
+<div class="container-fluid" style="margin-top:100px; margin-bottom:100px;">
+
+  <h1 align="center" class="text-primary font-weight-bold pb-3">
+    <u>Marksheet Merit List</u>
+  </h1>
+
+  <!-- SUCCESS MESSAGE -->
+  <div *ngIf="!form.error && form.message" class="row mt-3">
+    <div class="col-md-4 offset-md-4 alert alert-success alert-dismissible">
+      <button type="button" class="close">&times;</button>
+      {{form.message}}
+    </div>
+  </div>
+
+  <!-- ERROR MESSAGE -->
+  <div *ngIf="form.error && form.message" class="row">
+    <div class="col-md-4 offset-md-4 alert alert-danger alert-dismissible">
+      <button type="button" class="close">&times;</button>
+      {{form.message}}
+    </div>
+  </div>
+
+  <!-- PRINT BUTTON -->
+  <div class="text-right mb-3">
+
+    <button class="btn btn-warning" (click)="forward('/jasperReport')">
+
+      <i class="fa fa-print"></i> Print
+
+    </button>
+
+  </div>
+
+
+
+
+  <!-- TABLE -->
+  <div *ngIf="form.list.length > 0" class="table-responsive">
+
+    <table class="table table-dark table-hover table-bordered">
+
+      <thead>
+
+        <tr class="text-center">
+
+          <th>S.No</th>
+          <th>Roll No</th>
+          <th>Name</th>
+          <th>Physics</th>
+          <th>Chemistry</th>
+          <th>Maths</th>
+          <th>Total</th>
+          <th>Percentage (%)</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody class="text-center">
+
+        <tr *ngFor="let m of form.list; let i = index">
+
+          <td>{{(form.pageNo * 5) + i + 1}}</td>
+          <td>{{m.rollNo}}</td>
+          <td>{{m.name}}</td>
+          <td>{{m.physics}}</td>
+          <td>{{m.chemistry}}</td>
+          <td>{{m.maths}}</td>
+
+          <td>
+            {{m.physics + m.chemistry + m.maths}}
+          </td>
+
+          <td>
+            {{((m.physics + m.chemistry + m.maths) * 100) / 300 | number:'2.0-2'}} %
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <!-- BACK BUTTON -->
+  <div class="text-center mt-4">
+
+    <button class="btn btn-dark" (click)="forward('/marksheetList')">
+
+      Back
+
+    </button>
+
+  </div>
+
+</div>
