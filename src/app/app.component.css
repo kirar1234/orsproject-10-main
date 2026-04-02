@@ -1,7 +1,11 @@
 .main-content {
     min-height: 100vh;
 
+<<<<<<< HEAD
     background-image: url('/assets/image/comon.jpg');
+=======
+    background-image: url('/orsproject-10-main/assets/image/comon.jpg');
+>>>>>>> 1cd58f4c5ca4666ba73964a4b6f372b2fd071cbb
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

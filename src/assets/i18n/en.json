@@ -69,7 +69,10 @@
     },
     "UserForm": {
         "AddUser": "Add User",
+<<<<<<< HEAD
         "UserList":"User List",
+=======
+>>>>>>> 1cd58f4c5ca4666ba73964a4b6f372b2fd071cbb
         "UpdateUser": "Update User",
         "FirstName": "First Name",
         "LastName": "Last Name",
