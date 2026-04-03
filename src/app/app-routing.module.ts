@@ -42,6 +42,8 @@ import { GetMarksheetComponent } from './marksheet/get-marksheet.component';
 import { ForgetPasswordComponent } from './login/forget-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { MyProfileComponent } from './user/my-profile.component';
+import { BankComponent } from './bank/bank.component';
+import { BanklistComponent } from './bank/banklist.component';
 
 const routes: Routes = [
   {
@@ -358,6 +360,21 @@ const routes: Routes = [
   {
     path: 'myprofile/:id',
     component: MyProfileComponent
+  },
+
+   {
+    path: 'bank',
+    component: BankComponent
+  },
+
+  {
+    path: 'banklist',
+    component: BanklistComponent
+  },
+
+   {
+    path: 'bank/:id',
+    component: BankComponent
   },
 
 

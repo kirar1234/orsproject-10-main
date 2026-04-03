@@ -24,7 +24,7 @@ export class ServiceLocatorService {
     });
   }
 
-  forward(page: any) {
+   forward(page: any) {
     this.router.navigateByUrl(page);
   }
 }

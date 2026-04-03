@@ -35,6 +35,8 @@
         "welcome": "Welcome"
     },
     "Links": {
+        "AddBank": "Add Bank",
+        "BankList": " Bank List",
         "MyProfile": "My Profile",
         "ChangePassword": "Change Password",
         "AddUser": "Add User",
@@ -68,11 +70,16 @@
         "Hindi": "Hindi"
     },
     "UserForm": {
+        "BankList":"Bank List",
+        "AddBank":"Add Bank",
+        "UpdateBank":"Update Bank",
+        "AccountCode": "Account Code",
+        "AccountHolderName": "Account Holder Name",
+        "Balance": "Balance",
+        "Status": "Status",
+        "AccountType": "Account Type",
         "AddUser": "Add User",
-<<<<<<< HEAD
-        "UserList":"User List",
-=======
->>>>>>> 1cd58f4c5ca4666ba73964a4b6f372b2fd071cbb
+        "UserList": "User List",
         "UpdateUser": "Update User",
         "FirstName": "First Name",
         "LastName": "Last Name",
@@ -86,8 +93,13 @@
         "Status": "Status",
         "UploadImage": "Upload Image",
         "Placeholders": {
-            "FirstName": "Enter First Name",
+            "accountCode": "Enter Account Code",
+            "accountHolderName": "Enter Account Holder Name",
+            "balance": "Enter Balance",
+            "status": "Enter Status",
+            "accountType": "Enter Account Type",
             "LastName": "Enter Last Name",
+            "FirstName": "Enter First Name",
             "LoginId": "Enter Login ID",
             "Password": "Enter Password",
             "DateOfBirth": "Select Date of Birth",
@@ -99,7 +111,9 @@
             "Male": "Male",
             "Female": "Female",
             "Active": "Active",
-            "Inactive": "Inactive"
+            "Inactive": "Inactive",
+             "current": "Current",
+            "saving": "Saving"
         },
         "Table": {
             "SNo": "S.No",
@@ -134,6 +148,7 @@
         }
     },
     "Navbar": {
+        "Bank": "Bank",
         "User": "User",
         "Role": "Role",
         "College": "College",

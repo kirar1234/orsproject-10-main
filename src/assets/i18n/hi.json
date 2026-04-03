@@ -36,6 +36,8 @@
         "welcome": "स्वागत है"
     },
     "Links": {
+        "AddBank": "बैंक जोड़ें",
+        "BankList": "बैंक सूची",
         "MyProfile": "मेरा प्रोफ़ाइल",
         "ChangePassword": "पासवर्ड बदलें",
         "AddUser": "उपयोगकर्ता जोड़ें",
@@ -69,11 +71,17 @@
         "Hindi": "हिंदी"
     },
     "UserForm": {
+        "BankList": "बैंक सूची",
+        "UpdateBank": "अपडेट बैंक",
+        "AccountCode": "खाता कोड",
+        "AccountHolderName": "खाता धारक का नाम",
+        "Balance": "शेष राशि",
+        "Status": "स्थिति",
+        "AccountType": "खाते का प्रकार",
+        "AddBank": "बैंक जोड़ें",
         "AddUser": "उपयोगकर्ता जोड़ें",
         "UpdateUser": "उपयोगकर्ता अपडेट करें",
-
-        "UserList":"उपयोगकर्ता सूची",
- 
+        "UserList": "उपयोगकर्ता सूची",
         "FirstName": "पहला नाम",
         "LastName": "अंतिम नाम",
         "LoginId": "लॉगिन आईडी",
@@ -86,8 +94,13 @@
         "Status": "स्थिति",
         "UploadImage": "इमेज अपलोड करें",
         "Placeholders": {
-            "FirstName": "पहला नाम दर्ज करें",
+            "accountCode": "खाता कोड दर्ज करें",
+            "accountHolderName": "खाता धारक का नाम दर्ज करें",
+            "balance": "शेष राशि दर्ज करें",
+            "status": "स्थिति दर्ज करें",
+            "accountType": "खाते का प्रकार दर्ज करें",
             "LastName": "अंतिम नाम दर्ज करें",
+            "FirstName": "पहला नाम दर्ज करें",
             "LoginId": "लॉगिन आईडी दर्ज करें",
             "Password": "पासवर्ड दर्ज करें",
             "DateOfBirth": "जन्म तिथि चुनें",
@@ -99,7 +112,9 @@
             "Male": "पुरुष",
             "Female": "महिला",
             "Active": "सक्रिय",
-            "Inactive": "निष्क्रिय"
+            "Inactive": "निष्क्रिय",
+            "current": "चालू खाता",
+            "saving": "बचत खाता"
         },
         "Table": {
             "SNo": "क्रमांक",
@@ -110,6 +125,7 @@
         }
     },
     "Navbar": {
+        "Bank": "बैंक",
         "User": "उपयोगकर्ता",
         "Role": "भूमिका",
         "College": "कॉलेज",

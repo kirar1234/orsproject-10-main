@@ -54,6 +54,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { MyProfileComponent } from './user/my-profile.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { BankComponent } from './bank/bank.component';
+import { BanklistComponent } from './bank/banklist.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -106,7 +108,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoanComponent,
     GetMarksheetComponent,
     ChangePasswordComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    BankComponent,
+    BanklistComponent
 
   ],
   imports: [

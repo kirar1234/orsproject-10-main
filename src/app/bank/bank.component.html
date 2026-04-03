@@ -1,0 +1,192 @@
+<div class="container pt-4" style="margin-top:100px; margin-bottom:100px;">
+
+    <div class="row">
+
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h3 class="text-center text-primary pb-3" *ngIf="!form.data.id">
+                        {{'UserForm.AddBank' | translate}}
+                    </h3>
+
+                    <h3 class="text-center text-primary pb-3" *ngIf="form.data.id>0">
+                        {{'UserForm.UpdateBank' | translate}}
+                    </h3>
+
+                    <!-- SUCCESS MESSAGE -->
+                    <div *ngIf="!form.error && form.message" class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{form.message}}
+                    </div>
+
+                    <!-- ERROR MESSAGE -->
+                    <div *ngIf="form.error && form.message" class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{form.message}}
+                    </div>
+
+                    <form>
+
+
+                        <label>
+                            <b>{{'UserForm.AccountCode' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-id-card"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="accountCode"
+                                [(ngModel)]="form.data.accountCode"
+                                placeholder="{{'UserForm.Placeholders.accountCode' | translate}}">
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.accountCode}}</span>
+                        </div>
+
+
+
+                        <label class="mt-2">
+                            <b>{{'UserForm.AccountHolderName' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="accountHolderName"
+                                [(ngModel)]="form.data.accountHolderName"
+                                placeholder="{{'UserForm.Placeholders.accountHolderName' | translate}}">
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.accountHolderName}}</span>
+                        </div>
+
+
+
+                        <label class="mt-2">
+                            <b>{{'UserForm.Balance' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-money-bill"></i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" name="balance" [(ngModel)]="form.data.balance"
+                                placeholder="{{'UserForm.Placeholders.balance' | translate}}">
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.balance}}</span>
+                        </div>
+
+
+                        <label class="mt-2">
+                            <b>{{'UserForm.AccountType' | translate}}</b> <span style="color:red">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-university"></i>
+                                </div>
+                            </div>
+
+                            <select class="form-control" name="status" [(ngModel)]="form.data.accountType">
+
+                                <option value="undefined">
+                                    {{'UserForm.SelectOptions.Select' | translate}}
+                                </option>
+
+                                <option value="Current">
+                                    {{'UserForm.SelectOptions.current' | translate}}
+                                </option>
+
+                                <option value="Saving">
+                                    {{'UserForm.SelectOptions.saving' | translate}}
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div>
+                            <span class="text-danger">{{form.inputerror.accountType}}</span>
+                        </div>
+
+
+
+
+
+                        <!-- BUTTONS -->
+                        <div class="text-center mt-3">
+
+                            <button *ngIf="!form.data.id" type="button" class="btn btn-success" (click)="submit()">
+
+                                {{'Buttons.Save' | translate}}
+
+                            </button>
+
+                            &nbsp;
+
+                            <button *ngIf="!form.data.id" type="button" class="btn btn-warning btn-md"
+                                (click)="reset()">
+
+                                {{'Buttons.Reset' | translate}}
+
+                            </button>
+
+
+                            <button *ngIf="form.data.id > 0" type="button" class="btn btn-primary" (click)="submit()">
+
+                                {{'Buttons.Update' | translate}}
+
+                            </button>
+
+                            &nbsp;
+
+                            <button *ngIf="form.data.id > 0" type="button" class="btn btn-info"
+                                (click)="forward('/banklist')">
+
+                                {{'Buttons.List' | translate}}
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3"></div>
+
+    </div>
+
+</div>
